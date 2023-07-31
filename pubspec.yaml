@@ -34,6 +34,10 @@ dependencies:
   firebase_core: ^2.15.0
   flutter:
     sdk: flutter
+  flutter_slidable: ^3.0.0
+  http: ^1.1.0
+  json_annotation: ^4.8.1
+  json_serializable: ^6.7.1
 
 dev_dependencies:
   flutter_lints: ^2.0.0

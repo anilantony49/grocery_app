@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'pages/accountview.dart';
 import 'costants.dart';
-import 'pages/exploreview.dart';
+import 'pages/explore/exploreview.dart';
 import 'pages/homeview.dart';
 
 import 'pages/mycartview.dart';
@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
   TabController? controller;
   int selectTab = 0;
-  Map<String, dynamic>? userMap;
+ 
 
   @override
   void initState() {
@@ -27,14 +27,15 @@ class _HomeScreenState extends State<HomeScreen>
     controller = TabController(length: 5, vsync: this);
     controller?.addListener(() {
       selectTab = controller?.index ?? 0;
+        setState(() {});
     });
   }
+
   @override
   void dispose() {
     super.dispose();
     controller?.dispose();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -47,57 +48,17 @@ class _HomeScreenState extends State<HomeScreen>
         FavoritesView(),
         AccountView(),
       ]),
-      // appBar: PreferredSize(
-      //   preferredSize: const Size.fromHeight(115.0),
-      //   child: AppBar(
-      //     actions: [
-      //       Tooltip(
-      //         message: "Search",
-      //         child: IconButton(
-      //           icon: const Icon(Icons.search),
-      //           onPressed: () {},
-      //         ),
-      //       ),
-      //       PopupMenuButton(
-      //         shape: RoundedRectangleBorder(
-      //           borderRadius: BorderRadius.circular(18),
-      //         ),
-      //         itemBuilder: (context) {
-      //           return [
-      //             const PopupMenuItem(child: Text('New Group')),
-      //             const PopupMenuItem(child: Text('New Broadcast')),
-      //             const PopupMenuItem(child: Text('Linked Devices')),
-      //             const PopupMenuItem(child: Text('Starred Messages')),
-      //             const PopupMenuItem(child: Text('Settings')),
-      //             PopupMenuItem(
-      //                 child: TextButton(
-      //                     onPressed: () {
-      //                       logOut(context);
-      //                     },
-      //                     child: const Text("Log Out")))
-      //           ];
-      //         },
-      //       ),
-      //     ],
-
-      //     //  title: const Text('WhatsApp'),
-      //   ),
-      // ),
-       bottomNavigationBar: Container(
+      bottomNavigationBar: Container(
         decoration: const BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(15),
-            topRight: Radius.circular(15),
-          ),
-          boxShadow:  [
-            BoxShadow(
-              color: Colors.black26,
-              blurRadius: 3,
-              offset: Offset(0, -2)
-            )
-          ]
-        ),
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(15),
+              topRight: Radius.circular(15),
+            ),
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.black26, blurRadius: 3, offset: Offset(0, -2))
+            ]),
         child: BottomAppBar(
           color: Colors.transparent,
           elevation: 0,
@@ -124,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen>
                     "assets/img/store_tab.png",
                     width: 25,
                     height: 25,
-                    color: selectTab == 0 ? TColor.primary : TColor.primaryText ,
+                    color: selectTab == 0 ? TColor.primary : TColor.primaryText,
                   ),
                 ),
                 Tab(
@@ -133,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen>
                     "assets/img/explore_tab.png",
                     width: 25,
                     height: 25,
-                     color: selectTab == 1 ? TColor.primary : TColor.primaryText,
+                    color: selectTab == 1 ? TColor.primary : TColor.primaryText,
                   ),
                 ),
                 Tab(
@@ -142,7 +103,7 @@ class _HomeScreenState extends State<HomeScreen>
                     "assets/img/cart_tab.png",
                     width: 25,
                     height: 25,
-                     color: selectTab == 2 ? TColor.primary : TColor.primaryText,
+                    color: selectTab == 2 ? TColor.primary : TColor.primaryText,
                   ),
                 ),
                 Tab(
@@ -151,17 +112,16 @@ class _HomeScreenState extends State<HomeScreen>
                     "assets/img/fav_tab.png",
                     width: 25,
                     height: 25,
-                     color: selectTab == 3 ? TColor.primary : TColor.primaryText,
+                    color: selectTab == 3 ? TColor.primary : TColor.primaryText,
                   ),
                 ),
                 Tab(
                   text: "Account",
                   icon: Image.asset(
                     "assets/img/account_tab.png",
-
                     width: 25,
                     height: 25,
-                     color: selectTab == 4 ? TColor.primary : TColor.primaryText,
+                    color: selectTab == 4 ? TColor.primary : TColor.primaryText,
                   ),
                 )
               ]),
@@ -170,4 +130,3 @@ class _HomeScreenState extends State<HomeScreen>
     );
   }
 }
-

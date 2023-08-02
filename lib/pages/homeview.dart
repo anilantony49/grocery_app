@@ -21,7 +21,6 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   List<SingleRecipe>? exclusive;
 
-  List<GenericFood>? genericfood;
   bool _isLoading = true;
 
   TextEditingController txtSearch = TextEditingController();
@@ -99,13 +98,12 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    var media = MediaQuery.sizeOf(context);
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -198,8 +196,10 @@ class _HomeViewState extends State<HomeView> {
                 onPressed: () {},
               ),
               SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(children: [
+                 scrollDirection: Axis.horizontal,
+                child: Row(
+                //  crossAxisAlignment: CrossAxisAlignment.center, // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
                   SizedBox(
                       height: 230,
                       child: _isLoading
@@ -247,7 +247,7 @@ class _HomeViewState extends State<HomeView> {
               SizedBox(
                 height: 230,
                 child: _isLoading
-                    ? Center(child: CircularProgressIndicator())
+                    ? const Center(child: CircularProgressIndicator())
                     : ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: exclusive!.length,
@@ -295,7 +295,6 @@ class _HomeViewState extends State<HomeView> {
 
                       return ProductCell(
                         pObj: pObj,
-                       
                       );
                     }),
               ),

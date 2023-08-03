@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_list_app/pages/account/account_view.dart';
 
-import 'pages/accountview.dart';
 import 'costants.dart';
 import 'pages/explore/exploreview.dart';
 import 'pages/homeview.dart';

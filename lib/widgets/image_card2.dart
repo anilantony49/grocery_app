@@ -99,20 +99,44 @@ class ImageCard2 extends StatelessWidget {
             child: InkWell(
               onTap: onCart,
               child: Container(
-                width: 40,
-                height: 40,
-                decoration: BoxDecoration(
-                  color: TColor.primary,
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                alignment: Alignment.center,
-                child: IconButton(
-                  onPressed: (){
-
-                  }, icon: Icon(Icons.add,color: Colors.white,))
-              ),
+                  width: 40,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    color: TColor.primary,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  alignment: Alignment.center,
+                  child: IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.add,
+                        color: Colors.white,
+                      ))),
             ),
-          )
+          ),
+         const Positioned(
+              bottom: 180,  //  top: 150, // Adjust the top position as per your requirement
+            left: 140,
+           child:  Stack(
+           alignment: Alignment.center,
+           children: [
+             Icon(
+               Icons.favorite_outline,
+               size: 30,
+               color: Colors.red, // Outer fill color
+             ),
+             Opacity(
+               opacity: 0.8, // Adjust the opacity to control the fill level
+               child: Icon(
+                 Icons.favorite,
+                 size: 30,
+                 color: Colors.red, // Inner fill color
+               ),
+             ),
+           ],
+         ),
+         )
+
         ],
       ),
     );

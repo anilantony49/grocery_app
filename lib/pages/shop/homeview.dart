@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:grocery_list_app/models/homeview/single_recipe_api.dart';
 import 'package:grocery_list_app/product_cell2.dart';
 
-import '../costants.dart';
-import '../models/homeview/single_recipe.dart';
-import '../product_details.dart';
-import '../widgets/categorycell.dart';
-import '../widgets/image_card.dart';
+import '../../costants.dart';
+import '../../models/homeview/single_recipe.dart';
+import '../../product_details.dart';
+import '../../widgets/categorycell.dart';
+import '../../widgets/image_card.dart';
 
-import '../widgets/product_cell.dart';
-import '../widgets/section_view.dart';
+import '../../widgets/product_cell.dart';
+import '../../widgets/section_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});

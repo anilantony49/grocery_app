@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../costants.dart';
-import '../widgets/cart_item_row.dart';
+import '../../costants.dart';
+import '../../models/homeview/single_recipe.dart';
+
+import '../../models/homeview/single_recipe_api.dart';
+
+import '../../widgets/image_card5.dart';
+import 'checkout_view.dart';
 
 class MyCartView extends StatefulWidget {
   const MyCartView({super.key});
@@ -11,35 +16,30 @@ class MyCartView extends StatefulWidget {
 }
 
 class _MyCartViewState extends State<MyCartView> {
+  bool _isLoading = true;
+  List<SingleRecipe>? exclusive;
+
+  @override
+  void initState() {
+    super.initState();
+
+    getExclusive();
+  }
+
+  Future<void> getExclusive() async {
+    exclusive = await ExclusiveOfferApi.getExclusive();
+    setState(() {
+      _isLoading = false;
+    });
+    print(exclusive);
+  }
+
   List cartArr = [
-    {
-      "name": "Bell Pepper Red",
-      "icon": "assets/img/bell_pepper_red.png",
-      "qty": 1,
-      "unit": "1kg, Price",
-      "price": 2.99
-    },
-    {
-      "name": "Egg Chicken Red",
-      "icon": "assets/img/egg_chicken_red.png",
-      "qty": 1,
-      "unit": "4pcs, Price",
-      "price": 1.99
-    },
-    {
-      "name": "Organic Bananas",
-      "icon": "assets/img/banana.png",
-      "qty": 1,
-      "unit": "7pcs, Price",
-      "price": 1.99
-    },
-    {
-      "name": "Ginger",
-      "icon": "assets/img/ginger.png",
-      "qty": 1,
-      "unit": "250gm, Prices",
-      "price": 3.99
-    }
+    {"qty": 1, "unit": "1kg, Price", "price": 2.99},
+    {"qty": 1, "unit": "4pcs, Price", "price": 1.99},
+    {"qty": 1, "unit": "7pcs, Price", "price": 1.99},
+    {"qty": 1, "unit": "250gm, Prices", "price": 3.99},
+    {"qty": 1, "unit": "250gm, Prices", "price": 3.99}
   ];
 
   @override
@@ -61,19 +61,26 @@ class _MyCartViewState extends State<MyCartView> {
       body: Stack(
         alignment: Alignment.bottomCenter,
         children: [
-          ListView.separated(
-              padding: const EdgeInsets.all(20.0),
-              itemCount: cartArr.length,
-              separatorBuilder: (context, index) => const Divider(
-                    color: Colors.black26,
-                    height: 1,
-                  ),
-              itemBuilder: (context, index) {
-                var pObj = cartArr[index] as Map? ?? {};
-                return CartItemRow(
-                  pObj: pObj,
-                );
-              }),
+          SizedBox(
+            child: _isLoading
+                ? const Center(child: CircularProgressIndicator())
+                : ListView.separated(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 20),
+                    itemCount: exclusive!.length < 5 ? exclusive!.length : 5,
+                    separatorBuilder: (context, index) => const Divider(
+                          color: Colors.black26,
+                          height: 1,
+                        ),
+                    itemBuilder: (context, index) {
+                      var pObj = cartArr[index] as Map? ?? {};
+                      return ImageCard5(
+                        title: exclusive![index].name,
+                        thumbnailUrl: exclusive![index].images,
+                        pObj: pObj,
+                      );
+                    }),
+          ),
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: Column(
@@ -131,13 +138,12 @@ class _MyCartViewState extends State<MyCartView> {
   }
 
   void showCheckout() {
-    // showModalBottomSheet(
-    //     backgroundColor: Colors.transparent,
-    //     isDismissible: false,
-    //     context: context,
-        
-    //     builder: (context) {
-    //       return const CheckoutView();
-    //     });
+    showModalBottomSheet(
+        backgroundColor: Colors.transparent,
+        isDismissible: false,
+        context: context,
+        builder: (context) {
+          return const CheckoutView();
+        });
   }
 }

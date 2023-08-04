@@ -1,27 +1,18 @@
 import 'package:flutter/material.dart';
 
-
-
 class ImageCard3 extends StatelessWidget {
-  // final Map pObj;
-  // final String rating;
   final String thumbnailUrl;
   final VoidCallback? onPressed;
   final VoidCallback? onCart;
   final String index;
-   ImageCard3({
+  const ImageCard3({
     super.key,
     required this.index,
-    // required this.rating,
     required this.thumbnailUrl,
     this.onCart,
     this.onPressed,
-    // required this.pObj,
-
-    
   });
 
- 
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -56,7 +47,7 @@ class ImageCard3 extends StatelessWidget {
               ),
             ),
           ),
-           Positioned(
+          Positioned(
             bottom: 30, // Adjust the bottom position as per your requirement
             left: 20,
             right: 5,
@@ -97,7 +88,6 @@ class ImageCard3 extends StatelessWidget {
           //   //       fontWeight: FontWeight.w600),
           //   // ),
           // ),
-         
         ],
       ),
     );

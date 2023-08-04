@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_list_app/pages/account/account_view.dart';
+import 'package:grocery_list_app/pages/favourite/favourite_view.dart';
 
 import 'costants.dart';
 import 'pages/explore/exploreview.dart';
-import 'pages/homeview.dart';
+import 'pages/shop/homeview.dart';
 
-import 'pages/mycartview.dart';
-import 'pages/myfavoritesview.dart';
+import 'pages/cart/mycartview.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

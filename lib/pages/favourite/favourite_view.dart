@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_list_app/widgets/image_card.dart';
-import 'package:grocery_list_app/widgets/imagecard3.dart';
+import 'package:grocery_list_app/widgets/image_card3.dart';
 
 import '../../costants.dart';
 import '../../models/homeview/single_recipe.dart';

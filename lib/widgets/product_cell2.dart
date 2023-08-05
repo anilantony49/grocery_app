@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_list_app/widgets/image_card.dart';
 
-import 'costants.dart';
-import 'models/homeview/single_recipe.dart';
-import 'models/homeview/single_recipe_api.dart';
+import '../costants.dart';
+import '../models/homeview/single_recipe.dart';
+import '../models/homeview/single_recipe_api.dart';
 
 class ProductDetails2 extends StatefulWidget {
   const ProductDetails2({super.key});

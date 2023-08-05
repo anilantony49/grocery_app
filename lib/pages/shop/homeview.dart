@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_list_app/models/homeview/single_recipe_api.dart';
-import 'package:grocery_list_app/product_cell2.dart';
+import 'package:grocery_list_app/widgets/product_cell2.dart';
 
 import '../../costants.dart';
 import '../../models/homeview/single_recipe.dart';
-import '../../product_details.dart';
+import '../../widgets/product_details.dart';
 import '../../widgets/categorycell.dart';
 import '../../widgets/image_card.dart';
 
@@ -25,22 +25,7 @@ class _HomeViewState extends State<HomeView> {
 
   TextEditingController txtSearch = TextEditingController();
 
-  List bestSellingArr = [
-    {
-      "name": "Bell Pepper Red",
-      "icon": "assets/img/bell_pepper_red.png",
-      "qty": "1",
-      "unit": "kg, Prices",
-      "price": "\$2.99"
-    },
-    {
-      "name": "Ginger",
-      "icon": "assets/img/ginger.png",
-      "qty": "250",
-      "unit": "gm, Prices",
-      "price": "\$3.99"
-    }
-  ];
+ 
 
   List groceriesArr = [
     {
@@ -103,7 +88,7 @@ class _HomeViewState extends State<HomeView> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
-             crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -195,48 +180,23 @@ class _HomeViewState extends State<HomeView> {
                     const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                 onPressed: () {},
               ),
-              SingleChildScrollView(
-                 scrollDirection: Axis.horizontal,
-                child: Row(
-                //  crossAxisAlignment: CrossAxisAlignment.center, // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                  SizedBox(
-                      height: 230,
-                      child: _isLoading
-                          ? const Center(child: CircularProgressIndicator())
-                          : ImageCard(
-                              title: exclusive![0].name,
-                              cookTime: exclusive![0].totalTime,
-                              rating: exclusive![0].rating.toString(),
-                              thumbnailUrl: exclusive![0].images,
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          const ProductDetails(),
-                                    ));
-                              },
-                            )),
-                  SizedBox(
-                      height: 230,
-                      child: _isLoading
-                          ? const Center(child: CircularProgressIndicator())
-                          : ImageCard(
-                              title: exclusive![1].name,
-                              cookTime: exclusive![1].totalTime,
-                              rating: exclusive![1].rating.toString(),
-                              thumbnailUrl: exclusive![1].images,
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          const ProductDetails2(),
-                                    ));
-                              },
-                            )),
-                ]),
+              SizedBox(
+                height: 230,
+                child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: _isLoading
+                        ? const Center(child: CircularProgressIndicator())
+                        : Row(
+                            children: List.generate(
+                                exclusive!.length < 2 ? exclusive!.length : 2,
+                                (index) {
+                            return ImageCard(
+                              title: exclusive![index].name,
+                              cookTime: exclusive![index].totalTime,
+                              rating: exclusive![index].rating.toString(),
+                              thumbnailUrl: exclusive![index].images,
+                            );
+                          }))),
               ),
               SectionView(
                 title: "Best Setting",

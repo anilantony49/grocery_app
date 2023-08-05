@@ -6,7 +6,6 @@ import '../../models/homeview/single_recipe_api.dart';
 
 import '../../widgets/image_card2.dart';
 
-
 class ExploreDetailView extends StatefulWidget {
   final String eObj;
 
@@ -21,41 +20,21 @@ class ExploreDetailView extends StatefulWidget {
 
 class _ExploreDetailViewState extends State<ExploreDetailView> {
   List listArr = [
-    {"name": "Diet Coke", "qty": "355", "unit": "ml, Price", "price": "\$1.99"},
-    {
-      "name": "Sprite Can",
-      "qty": "325",
-      "unit": "ml, Price",
-      "price": "\$1.49"
-    },
-    {
-      "name": "Apple & Grape Juice",
-      "qty": "2",
-      "unit": "L, Price",
-      "price": "\$15.99"
-    },
-    {
-      "name": "Orange Juice",
-      "qty": "2",
-      "unit": "L, Price",
-      "price": "\$15.49"
-    },
-    {
-      "name": "Coca Cola Can",
-      "qty": "325",
-      "unit": "ml, Price",
-      "price": "\$4.99"
-    },
-    {"name": "Pepsi Can", "qty": "325", "unit": "ml, Price", "price": "\$4.49"}
+    {"qty": "355", "unit": "gr, Price", "price": "\$1.99"},
+    {"qty": "325", "unit": "gr, Price", "price": "\$1.49"},
+    {"qty": "2", "unit": "kg, Price", "price": "\$15.99"},
+    {"qty": "2", "unit": "kg, Price", "price": "\$15.49"},
+    {"qty": "325", "unit": "gr, Price", "price": "\$4.99"},
+    {"qty": "325", "unit": "gr, Price", "price": "\$4.49"}
   ];
-    List<String> title = [
-    "Frash Fruits & Vegetable",
-    "Cooking Oil & Ghee",
-    "Meat & Fish",
-    "Bakery & Snacks",
-    "Dairy & Eggs",
-    "Beverages",
-  ];
+  // List<String> title = [
+  //   "Frash Fruits & Vegetable",
+  //   "Cooking Oil & Ghee",
+  //   "Meat & Fish",
+  //   "Bakery & Snacks",
+  //   "Dairy & Eggs",
+  //   "Beverages",
+  // ];
   List<SingleRecipe>? exclusive;
 
   bool _isLoading = true;
@@ -64,7 +43,6 @@ class _ExploreDetailViewState extends State<ExploreDetailView> {
     super.initState();
 
     getExclusive();
-    // getGenericFood();
   }
 
   // @override
@@ -122,12 +100,7 @@ class _ExploreDetailViewState extends State<ExploreDetailView> {
             )),
         actions: [
           IconButton(
-              onPressed: () {
-                // Navigator.push(
-                //     context,
-                //     MaterialPageRoute(
-                //         builder: (context) => const FilterView()));
-              },
+              onPressed: () {},
               icon: Image.asset(
                 "assets/img/filter_ic.png",
                 width: 20,
@@ -135,7 +108,7 @@ class _ExploreDetailViewState extends State<ExploreDetailView> {
               )),
         ],
         title: Text(
-     widget.  eObj,
+          widget.eObj,
           style: TextStyle(
               color: TColor.primaryText,
               fontSize: 20,
@@ -143,7 +116,7 @@ class _ExploreDetailViewState extends State<ExploreDetailView> {
         ),
       ),
       body: _isLoading
-          ? const Center(child: CircularProgressIndicator())
+          ? const Center(child:CircularProgressIndicator())
           : GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
@@ -155,20 +128,8 @@ class _ExploreDetailViewState extends State<ExploreDetailView> {
               itemBuilder: (context, index) {
                 var pObj = listArr[index] as Map? ?? {};
                 return ImageCard2(
-                  // index: index,
                   pObj: pObj,
-
-                  // rating: "",
                   thumbnailUrl: exclusive![index].images,
-                  onPressed: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //       builder: (context) => const ExploreDetailView(
-                    //             eObj: {},
-                    //           )),
-                    // );
-                  },
                 );
               },
             ),

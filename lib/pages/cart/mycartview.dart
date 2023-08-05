@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../cartmodels/cart_models.dart';
 import '../../costants.dart';
+import '../../db/cart_db.dart';
 import '../../models/homeview/single_recipe.dart';
 
 import '../../models/homeview/single_recipe_api.dart';
@@ -67,7 +69,7 @@ class _MyCartViewState extends State<MyCartView> {
                 : ListView.separated(
                     padding: const EdgeInsets.symmetric(
                         vertical: 10, horizontal: 20),
-                    itemCount: exclusive!.length < 5 ? exclusive!.length : 5,
+                    itemCount: exclusive!.length < 4 ? exclusive!.length : 4,
                     separatorBuilder: (context, index) => const Divider(
                           color: Colors.black26,
                           height: 1,
@@ -80,6 +82,28 @@ class _MyCartViewState extends State<MyCartView> {
                         pObj: pObj,
                       );
                     }),
+
+            // ValueListenableBuilder(
+            //     valueListenable: CartDb().cartListNotifier,
+            //     builder: (BuildContext context, List<CartModels> newValue,
+            //         Widget? _) {
+            //       return CartDb
+            //               .singleton.cartListNotifier.value.isNotEmpty
+            //           ? Column(
+            //               children: [
+            //                 Expanded(
+            //                   child:
+            //                 )
+            //               ],
+            //             )
+            //           : const Center(
+            //               child: Text(
+            //                 "Tap the '+' icon to add new items",
+            //                 style: TextStyle(
+            //                     fontSize: 20, color: Colors.grey),
+            //               ),
+            //             );
+            //     })
           ),
           Padding(
             padding: const EdgeInsets.all(20.0),

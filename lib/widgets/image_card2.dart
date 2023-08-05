@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_list_app/cartmodels/cart_models.dart';
+import 'package:grocery_list_app/db/cart_db.dart';
 
 import '../costants.dart';
 
@@ -21,7 +23,6 @@ class ImageCard2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onPressed,
       child: Stack(
         children: [
           Container(
@@ -106,37 +107,46 @@ class ImageCard2 extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15),
                   ),
                   alignment: Alignment.center,
-                  child: IconButton(
-                      onPressed: () {},
+                  child: IconButton( 
+                      onPressed: () {
+                        // final cart = CartModels(
+                        //     id: DateTime.now()
+                        //         .millisecondsSinceEpoch
+                        //         .toString(),
+                        //     image: thumbnailUrl,
+                        //     title: "name");
+                        // CartDb.singleton.insertCart(cart);
+                        // print(cart.toString());
+                      },
                       icon: const Icon(
                         Icons.add,
                         color: Colors.white,
                       ))),
             ),
           ),
-         const Positioned(
-              bottom: 180,  //  top: 150, // Adjust the top position as per your requirement
+          const Positioned(
+            bottom:
+                180, //  top: 150, // Adjust the top position as per your requirement
             left: 140,
-           child:  Stack(
-           alignment: Alignment.center,
-           children: [
-             Icon(
-               Icons.favorite_outline,
-               size: 30,
-               color: Colors.red, // Outer fill color
-             ),
-             Opacity(
-               opacity: 0.8, // Adjust the opacity to control the fill level
-               child: Icon(
-                 Icons.favorite,
-                 size: 30,
-                 color: Colors.red, // Inner fill color
-               ),
-             ),
-           ],
-         ),
-         )
-
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Icon(
+                  Icons.favorite_outline,
+                  size: 30,
+                  color: Colors.red, // Outer fill color
+                ),
+                Opacity(
+                  opacity: 0.8, // Adjust the opacity to control the fill level
+                  child: Icon(
+                    Icons.favorite,
+                    size: 30,
+                    color: Colors.red, // Inner fill color
+                  ),
+                ),
+              ],
+            ),
+          )
         ],
       ),
     );

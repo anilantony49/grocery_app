@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../costants.dart';
+import '../../methods.dart';
 import '../../widgets/account_row.dart';
 
 class AccountView extends StatefulWidget {
@@ -124,7 +125,6 @@ class _AccountViewState extends State<AccountView> {
                           )
                         ],
                       ),
-                     
                     ],
                   ))
                 ],
@@ -180,7 +180,9 @@ class _AccountViewState extends State<AccountView> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   MaterialButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      logOut(context);
+                    },
                     height: 60,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(19)),
